@@ -1,4 +1,10 @@
 import mongoose from "mongoose";
+import dns from "node:dns/promises";
+
+// Only run the DNS override on your local computer
+if (process.env.NODE_ENV === "development") {
+  dns.setServers(["1.1.1.1", "8.8.8.8"]);
+}
 
 let cached = global.mongoose
 
